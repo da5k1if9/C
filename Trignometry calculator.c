@@ -6,19 +6,27 @@ int main() {
     float ratio, p, h, b;
 
     // Get user input for trigonometric function choice
-    {printf("Enter (1)-for Sin  (2)-for Cos  (3)-for Tan: \n");
-    scanf("%d", &a);}
+    printf("Enter (1)-for Sin  (2)-for Cos  (3)-for Tan: \n");
+    scanf("%d", &a);
 
     // Input based on user's choice
     if (a == 1) {
         // Sin function: Perpendicular and Hypotenuse
         printf("Enter Perpendicular and Hypotenuse: ");
         scanf("%f %f", &p, &h);
+        if (p > h) {
+            printf("Perpendicular cannot be greater than Hypotenuse.\n");
+            return 0;
+        }
         ratio = p / h;
     } else if (a == 2) {
         // Cos function: Base and Hypotenuse
         printf("Enter Base and Hypotenuse: ");
         scanf("%f %f", &b, &h);
+        if (b > h) {
+            printf("Base cannot be greater than Hypotenuse.\n");
+            return 0;
+        }
         ratio = b / h;
     } else if (a == 3) {
         // Tan function: Perpendicular and Base
@@ -34,9 +42,7 @@ int main() {
     // Output the ratio and angle name based on user input
     if (a == 1) {  // Sin
         printf("The value of ratio is sin: ");
-        if (p>h)
-        printf ("Perpendicular cannot be greater the Hypotenouse ");
-        else if (ratio == 0)
+        if (ratio == 0)
             printf("sin(0)\n");
         else if (ratio == 0.5)
             printf("sin(30)\n");
@@ -48,11 +54,8 @@ int main() {
             printf("sin(90)\n");
         else
             printf("Enter Standard Ratio\n");
-    }
-    else if (a == 2) {  // Cos
+    } else if (a == 2) {  // Cos
         printf("The value of ratio is cos: ");
-            if (b>h)
-        printf ("Base cannot be greater the Hypotenouse ");
         if (ratio == 0)
             printf("cos(90)\n");
         else if (ratio == 0.5)
@@ -65,8 +68,7 @@ int main() {
             printf("cos(0)\n");
         else
             printf("Enter Standard Ratio\n");
-    }
-    else {  // Tan
+    } else {  // Tan
         printf("The value of ratio is tan: ");
         if (ratio == 0)
             printf("tan(0)\n");
@@ -76,9 +78,9 @@ int main() {
             printf("tan(60)\n");
         else if (ratio == 1 / sqrt(3))
             printf("tan(30)\n");
-        else if (b==0)  // Approximation for tan(90)
+        else if (b == 0)  // Approximation for tan(90)
             printf("tan(90)\n");
-        else 
+        else
             printf("Enter Standard Ratio\n");
     }
 
